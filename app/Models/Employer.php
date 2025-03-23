@@ -13,6 +13,8 @@ class Employer extends Model
     /** @use HasFactory<EmployerFactory> */
     use HasFactory;
 
+    protected $fillable = ['user_id', 'name', 'logo'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -20,6 +22,6 @@ class Employer extends Model
 
     public function jobs(): HasMany
     {
-        return $this->hasMany(Job::class, 'employer_id');
+        return $this->hasMany(Job::class);
     }
 }
